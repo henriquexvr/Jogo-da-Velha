@@ -5,17 +5,11 @@ import java.util.Scanner;
 public class JogoDaVelha {
     public static void main(String[] args) {
         char[][] jogo = new char[3][3];
-        jogo[0][0] = ' ';
-        jogo[0][1] = ' ';
-        jogo[0][2] = ' ';
-
-        jogo[1][0] = ' ';
-        jogo[1][1] = ' ';
-        jogo[1][2] = ' ';
-
-        jogo[2][0] = ' ';
-        jogo[2][1] = ' ';
-        jogo[2][2] = ' ';
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                jogo[i][j] = ' ';
+            }
+        }
 
         //char jogadorX = 'X', jogadorO = 'O';
         boolean fimDeJogo = false;
@@ -65,6 +59,11 @@ public class JogoDaVelha {
                 System.out.println("Escreva a coluna: ");
                 coluna = ler.nextInt();
 
+                if(jogo[linha - 1][coluna - 1] != ' '){
+                    System.out.println("Lugar ja preenchido, escolha outro!");
+                    continue;""
+                }
+
                 jogo[linha - 1][coluna - 1] = player1;
             }else{
                 System.out.println("Turno do Player 2 - "+player2+":");
@@ -73,6 +72,10 @@ public class JogoDaVelha {
                 System.out.println("Escreva a coluna: ");
                 coluna = ler.nextInt();
 
+                if(jogo[linha - 1][coluna - 1] != ' '){
+                    System.out.println("Lugar ja preenchido, escolha outro!");
+                    continue;
+                }
                 jogo[linha - 1][coluna - 1] = player2;
             }
 
@@ -82,7 +85,7 @@ public class JogoDaVelha {
             System.out.print("2 [" + jogo[1][0] + "] [" + jogo[1][1] + "] [" + jogo[1][2] + "]\n");
             System.out.print("3 [" + jogo[2][0] + "] [" + jogo[2][1] + "] [" + jogo[2][2] + "]\n");
 
-            if ((jogo[0][0] == 'X' && jogo[0][1] == 'X' && jogo[0][2] == 'X') || (jogo[1][0] == 'X' && jogo[1][1] == 'X' && jogo[1][2] == 'X') || (jogo[2][0] == 'X' && jogo[2][1] == 'X' && jogo[2][2] == 'X') || (jogo[0][0] == 'X' && jogo[1][1] == 'X' && jogo[2][2] == 'X') || (jogo[2][0] == 'X' && jogo[1][1] == 'X' && jogo[0][2] == 'X')){
+            if ((jogo[0][0] == 'X' && jogo[0][1] == 'X' && jogo[0][2] == 'X') || (jogo[1][0] == 'X' && jogo[1][1] == 'X' && jogo[1][2] == 'X') || (jogo[2][0] == 'X' && jogo[2][1] == 'X' && jogo[2][2] == 'X') || (jogo[0][0] == 'X' && jogo[1][1] == 'X' && jogo[2][2] == 'X') || (jogo[2][0] == 'X' && jogo[1][1] == 'X' && jogo[0][2] == 'X') || (jogo[0][0] == 'X' && jogo[1][0] == 'X' && jogo[2][0] == 'X') || (jogo[0][1] == 'X' && jogo[1][1] == 'X' && jogo[2][1] == 'X')  || (jogo[0][2] == 'X' && jogo[1][2] == 'X' && jogo[2][2] == 'X')){
                 if(player1 == 'X'){
                     System.out.println( "Player 1 Ganhou!");
                     fimDeJogo = true;
@@ -91,7 +94,7 @@ public class JogoDaVelha {
                     fimDeJogo = true;
                 }
 
-            }else if((jogo[0][0] == 'O' && jogo[0][1] == 'O' && jogo[0][2] == 'O') || (jogo[1][0] == 'O' && jogo[1][1] == 'O' && jogo[1][2] == 'O') || (jogo[2][0] == 'O' && jogo[2][1] == 'O' && jogo[2][2] == 'O') || (jogo[0][0] == 'O' && jogo[1][1] == 'O' && jogo[2][2] == 'O') || (jogo[2][0] == 'O' && jogo[1][1] == 'O' && jogo[0][2] == 'O')){
+            }else if((jogo[0][0] == 'O' && jogo[0][1] == 'O' && jogo[0][2] == 'O') || (jogo[1][0] == 'O' && jogo[1][1] == 'O' && jogo[1][2] == 'O') || (jogo[2][0] == 'O' && jogo[2][1] == 'O' && jogo[2][2] == 'O') || (jogo[0][0] == 'O' && jogo[1][1] == 'O' && jogo[2][2] == 'O') || (jogo[2][0] == 'O' && jogo[1][1] == 'O' && jogo[0][2] == 'O')  || (jogo[0][0] == 'O' && jogo[1][0] == 'O' && jogo[2][0] == 'O') || (jogo[0][1] == 'O' && jogo[1][1] == 'O' && jogo[2][1] == 'O') || (jogo[0][2] == 'O' && jogo[1][2] == 'O' && jogo[2][2] == 'O')){
                 if(player1 == 'O'){
                     System.out.println( "Player 1 Ganhou!");
                     fimDeJogo = true;
